@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+<!--    custom error page-->
+    <error-page>
+        <error-code>500</error-code><!--without the error code, any error will pull the jsp file -->
+        <location>/500.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+
+        <!-- Display jsp page for NullPointerException. You can use
+        java.lang.Throwable to display any exception that is thrown-->
+
+<!--    <error-page>-->
+<!--        <exception-type>java.lang.NullPointerException</exception-type>-->
+<!--        <location>/500.jsp</location>-->
+<!--    </error-page>-->
+
+<!--    Constant value that every servlet has access to-->
+    <context-param>
+        <param-name>authorizationToken</param-name>
+        <param-value>1234swag</param-value>
+    </context-param>
+    
+    Setting a constant token or value for a specific servlet
+    <servlet>
+        <servlet-name>com.servlet1.MyServlet</servlet-name>
+        <servlet-class>com.servlet1.MyServlet</servlet-class>
+        <init-param>
+            <param-name>copyrightYear</param-name>
+            <param-value>2020</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>com.servlet1.MyServlet</servlet-name>
+        <url-pattern>/copyright</url-pattern>
+    </servlet-mapping>
+</web-app>
